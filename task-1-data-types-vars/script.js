@@ -8,7 +8,9 @@ const integerSum = Math.trunc(tea) + Math.trunc(candies) + Math.trunc(coffee);
 
 const roundedIntegerSum = Math.round(integerSum / 100) * 100;
 
-const clientChange = 500 - totalSum;
+const clientSum = 500;
+
+const clientChange = clientSum - totalSum;
 
 const roundedAverage = ((integerSum) / 3).toFixed(2);
 
