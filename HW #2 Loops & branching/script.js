@@ -1,10 +1,10 @@
-let n = +prompt('Введите число n');
+let n = +prompt('Введите число n',0);
 
-while(isNaN(n)) n = +prompt('n не является числом, попробуйте ещё раз');
+while(isNaN(n)) n = +prompt('n не является числом, попробуйте ещё раз',0);
 
-let m = +prompt('Введите число m');
+let m = +prompt('Введите число m', 0);
 
-while(isNaN(m)) m = +prompt('m не является числом, попробуйте ещё раз');
+while(isNaN(m)) m = +prompt('m не является числом, попробуйте ещё раз', 0);
 
 let mode = confirm('Пропускать парные числа?');
 let sum = 0;
