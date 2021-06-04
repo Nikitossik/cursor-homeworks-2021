@@ -14,7 +14,7 @@ const clientChange = clientSum - totalSum;
 
 const roundedAverage = ((integerSum) / 3).toFixed(2);
 
-const maxDiscountPercent = 51; // хочу максимальную скидку в 50%, можно?))
+const maxDiscountPercent = 51;
 
 const discount = Math.floor(Math.random() * maxDiscountPercent) / 100;
 
