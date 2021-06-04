@@ -13,4 +13,6 @@ for (let i = n; i <= m; i++){
     sum+=i;
 }
 
-console.log(sum);
+const res = document.getElementById('result');
+
+res.textContent = sum;
