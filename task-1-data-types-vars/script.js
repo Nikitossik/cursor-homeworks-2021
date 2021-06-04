@@ -16,7 +16,7 @@ const discount = Math.floor(Math.random() * 51) / 100;
 
 const reducedSum = (totalSum - totalSum * discount).toFixed(2);
 
-const income = Math.floor((integerSum / 2) - discount * 100);
+const income = Math.floor((integerSum / 2) - integerSum * discount);
 
 document.write(`
 <p>Максимальна ціна: ${Math.max(tea, candies, coffee)}</p>
