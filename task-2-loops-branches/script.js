@@ -1,10 +1,10 @@
-let n = Math.trunc(+prompt('Введите число n',0));
+let n = +prompt('Введите целое число n',0);
 
-while(isNaN(n)) n = Math.trunc(+prompt('n не является числом, попробуйте ещё раз',0));
+while(isNaN(n) || !Number.isInteger(n)) n = +prompt('n не является целым числом, попробуйте ещё раз',0);
 
-let m = Math.trunc(+prompt('Введите число m', 0));
+let m = +prompt('Введите целое число m', 0);
 
-while(isNaN(m)) m = Math.trunc(+prompt('m не является числом, попробуйте ещё раз', 0));
+while(isNaN(m)|| !Number.isInteger(m) ) m = +prompt('m не является целым числом, попробуйте ещё раз', 0);
 
 let min = Math.min(m,n);
 let max = Math.max(m,n);
