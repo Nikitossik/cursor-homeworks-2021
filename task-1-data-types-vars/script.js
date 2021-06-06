@@ -12,13 +12,13 @@ const clientSum = 500;
 
 const clientChange = clientSum - totalSum;
 
-const roundedAverage = ((integerSum) / 3).toFixed(2);
+const roundedAverage = +((integerSum) / 3).toFixed(2);
 
 const maxDiscountPercent = 51;
 
 const discount = Math.floor(Math.random() * maxDiscountPercent) / 100;
 
-const reducedSum = (totalSum - totalSum * discount).toFixed(2);
+const reducedSum = +(totalSum - totalSum * discount).toFixed(2);
 
 const income = Math.floor((integerSum / 2) - integerSum * discount);
 
