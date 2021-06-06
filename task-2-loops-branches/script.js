@@ -1,12 +1,15 @@
-let n = prompt('Введите целое число n',0).trim(); // обрезаем лишние пробелы
+let n = prompt('Введите целое число n',0); 
+let spaceReg = /^\s*$/;
 
-while(isNaN(+n) || !Number.isInteger(+n) || n == '') 
-    n = prompt('n не является целым числом, попробуйте ещё раз',0).trim();
+// spaceReg.test('string') - проверка, состоит ли строка только из пробелов или пустая
 
-let m = prompt('Введите целое число m', 0).trim();
+while(isNaN(+n) || !Number.isInteger(+n) || spaceReg.test(n)) 
+    n = prompt('n не является целым числом, попробуйте ещё раз',0);
 
-while(isNaN(+m)|| !Number.isInteger(+m) || m == '') 
-    m = prompt('m не является целым числом, попробуйте ещё раз', 0).trim();
+let m = prompt('Введите целое число m', 0);
+
+while(isNaN(+m)|| !Number.isInteger(+m) || spaceReg.test(m)) 
+    m = prompt('m не является целым числом, попробуйте ещё раз', 0);
 
 let min = Math.min(+m, +n);
 let max = Math.max(+m,+n);
