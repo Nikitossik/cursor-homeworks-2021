@@ -17,10 +17,10 @@ const getMaxDigit  = number => {
 
 const powerDigit = (num, power) => {
     if (isNotaNumber(num) || isNotaNumber(power)) return 'Неправильный формат';
-    else if (!Number.isInteger(+num) || !Number.isInteger(+power)) return 'Числа должны быть целыми'
+    else if (!Number.isInteger(+power)) return 'Степень должна быть целой'
     let res = 1;
     for (let i = 0; i < power; i++) res *= num;
-    return res;
+    return res.toFixed(2);
 }
 
 // 3
