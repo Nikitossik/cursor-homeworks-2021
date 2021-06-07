@@ -47,7 +47,7 @@ const getMaxDigit  = number => {
 
 // добавляем в Math функцию вычисления корня n-нной степени
 
-Math.nthroot = (x,n) => this.exp((1/n)*this.log(x));
+Math.nthroot = (x,n) => Math.exp((1/n) * Math.log(x));
 
 // функция возвращает представление десятичной дробной степени в обычной: целый числитель и знаменатель
 
@@ -63,6 +63,25 @@ function getRegularFraction(power){
     let multiplier = powerDigit(10, Math.abs(exp)); // множитель для числителя
     denominator = Math.round10(denominator, exp) * multiplier; // округляем и перемножаем знаменатель
     numerator = multiplier; // перемножаем числитель
+
+    // функия нахождения найбольшего общего делителя
+
+    function gcd(x, y){
+        if (y > x) return gcd(y, x);
+	    if (!y) return x;
+	    return gcd(y, x % y);
+    }
+
+    console.log(numerator, denominator);
+
+    let gcdValue = gcd(numerator, denominator);
+
+    // сокращаем значения
+
+    numerator /= gcdValue;
+    denominator /= gcdValue;
+
+    console.log(numerator, denominator);
 
     return [numerator, denominator];
 }
