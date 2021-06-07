@@ -232,8 +232,3 @@ function callFunction(e) {
 
     functionResult.textContent = functions[functionIndex](...functionArgs);
 }
-
-
-
-
-
