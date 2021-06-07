@@ -83,7 +83,6 @@ const convertCurrency = moneyString => {
 
 const getRandomPassword = (length = 8) =>{
     length = length || 8;
-    console.log(length);
     if (isNotaNumber(length)) return 'Вы ввели не число!'; 
     else if (!Number.isInteger(+length)) return 'Число должно быть целым'; 
     let password = '';
@@ -112,8 +111,6 @@ const isPalyndrom = string => {
 const deleteDuplicateLetter = string => {
     const letters = string.split('');
     const uniqueLetters = Array.from(new Set(letters));
-
-    console.log(uniqueLetters);
 
     for (let i = 0; i < uniqueLetters.length; i++){
         if (countLetter(uniqueLetters[i], string, null) > 1) string = deleteLetters(uniqueLetters[i], string);
