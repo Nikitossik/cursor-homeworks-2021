@@ -58,7 +58,8 @@ body {
 
 .function {
   position: relative;
-  flex: 0 1 400px;
+  flex: 0 0 400px;
+  max-width: 400px;
   padding: 30px 20px 20px 20px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(6px);
@@ -88,6 +89,11 @@ body {
   flex: 1 0 auto;
 }
 
+.function__footer {
+  display: flex;
+  align-items: center;
+}
+
 .btn {
   margin: 0 20px 0 0;
   outline: none;
@@ -105,4 +111,5 @@ body {
 .function__result {
   color: #fff;
   font-size: 1em;
+  word-break: break-all;
 }
