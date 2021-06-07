@@ -72,16 +72,12 @@ function getRegularFraction(power){
 	    return gcd(y, x % y);
     }
 
-    console.log(numerator, denominator);
-
     let gcdValue = gcd(numerator, denominator);
 
     // сокращаем значения
 
     numerator /= gcdValue;
     denominator /= gcdValue;
-
-    console.log(numerator, denominator);
 
     return [numerator, denominator];
 }
