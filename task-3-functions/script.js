@@ -15,12 +15,82 @@ const getMaxDigit  = number => {
 
 // 2
 
+// добавляем в Math функцию округления к определённому разряду
+
+(function() {
+    function decimalAdjust(type, value, exp) {
+      // Если степень не определена, либо равна нулю...
+      if (typeof exp === 'undefined' || +exp === 0) {
+        return Math[type](value);
+      }
+      value = +value;
+      exp = +exp;
+      // Если значение не является числом, либо степень не является целым числом...
+      if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+        return NaN;
+      }
+      // Сдвиг разрядов
+      value = value.toString().split('e');
+      value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+      // Обратный сдвиг
+      value = value.toString().split('e');
+      return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+    }
+  
+    // Десятичное округление к ближайшему
+    if (!Math.round10) {
+      Math.round10 = function(value, exp) {
+        return decimalAdjust('round', value, exp);
+      };
+    }
+})();
+
+// добавляем в Math функцию вычисления корня n-нной степени
+
+Math.nthroot = (x,n) => this.exp((1/n)*this.log(x));
+
+// функция возвращает представление десятичной дробной степени в обычной: целый числитель и знаменатель
+
+function getRegularFraction(power){
+
+    // получаем значение десятичной дроби в представлении обычной: числителя и знаменателя
+    let numerator = 1;
+    let denominator = numerator / power;
+
+    let valueAfterComma = String(denominator).split('.')[1]; // значение после запятой у знаменателя
+    let firstZerosAfterComma = valueAfterComma ? valueAfterComma.match(/^(0+)?/g)[0] : ''; // первые идущие подряд нули в этой части
+    let exp = firstZerosAfterComma.length === 0 ? -2 : -(firstZerosAfterComma.length + 1); // если нулей нет, то будем округлять до сотых, а если есть - до их колво + 1
+    let multiplier = powerDigit(10, Math.abs(exp)); // множитель для числителя
+    denominator = Math.round10(denominator, exp) * multiplier; // округляем и перемножаем знаменатель
+    numerator = multiplier; // перемножаем числитель
+
+    return [numerator, denominator];
+}
+
 const powerDigit = (num, power) => {
+
+    // функция расчёта целой степени числа
+
+    function integerPower(num, power){
+        let res = 1;
+        if (power !== 0) {
+            for (let i = 0; i < Math.abs(power); i++) res *= num;
+            res = power < 0 ? (1 / res).toFixed(2) : res;
+        }
+        return res;
+    }
+
     if (isNotaNumber(num) || isNotaNumber(power)) return 'Неправильный формат';
-    else if (!Number.isInteger(+power)) return 'Степень должна быть целой'
     let res = 1;
-    for (let i = 0; i < power; i++) res *= num;
-    return res.toFixed(2);
+    power = +power; 
+    if (!Number.isInteger(power)){ // еслм степень не целая
+        let [numerator, denominator] = getRegularFraction(power); 
+        let poweredNum = integerPower(num, numerator); // возводим число в степень числителя
+        res = Math.nthroot(poweredNum, denominator); // ищем корень степени знаминателя от полученного
+        if (isNotaNumber(res)) return 'Выходит не число!';
+    }
+    else res = integerPower(num, power);
+    return res;
 }
 
 // 3
