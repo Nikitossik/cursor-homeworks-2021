@@ -54,18 +54,42 @@ Math.nthroot = (x,n) => Math.exp((1/n) * Math.log(x));
 
 function getRegularFraction(power){
 
-    // получаем значение десятичной дроби в представлении обычной: числителя и знаменателя
-    let numerator = 1;
-    let denominator = numerator / power;
+    let numerator, denominator; // числитель, знименатель
 
-    let valueAfterComma = String(denominator).split('.')[1]; // значение после запятой у знаменателя
-    let firstZerosAfterComma = valueAfterComma ? valueAfterComma.match(/^(0+)?/g)[0] : ''; // первые идущие подряд нули в этой части
-    let exp = firstZerosAfterComma.length === 0 ? -2 : -(firstZerosAfterComma.length + 1); // если нулей нет, то будем округлять до сотых, а если есть - до их колво + 1
-    let multiplier = powerDigit(10, Math.abs(exp)); // множитель для числителя
-    denominator = Math.round10(denominator, exp) * multiplier; // округляем и перемножаем знаменатель
-    numerator = multiplier; // перемножаем числитель
+    function getExponentToRound(number){
+        const defaultRoundingExp = -2;
+        let valueAfterComma = String(number).split('.')[1];  // значение после запятой у знаменателя
+        let firstZerosAfterComma = valueAfterComma ? valueAfterComma.match(/^(0+)?/g)[0] : '';  // первые идущие подряд нули в этой части
+        let exp = firstZerosAfterComma.length ? defaultRoundingExp : -(firstZerosAfterComma.length + 1); 
+        // если нулей нет, то будем округлять до defaultRoundingExp, а если есть - до их кол-ва
+        return exp;
+    }
 
-    // функия нахождения найбольшего общего делителя
+    if (power > -1 && power < 0 || power < 1 && power > 0){
+        numerator = 1;
+        denominator = numerator / power;
+
+        let exponent = getExponentToRound(denominator);
+        multiplier = powerDigit(10, Math.abs(exponent)); // множитель для числителя
+
+        denominator = Math.round10(denominator, exponent) * multiplier; // округляем и перемножаем знаменатель
+        numerator = multiplier; // перемножаем числитель
+    }
+    else{
+        numerator = power;
+        denominator = 1;
+
+        let exponent = getExponentToRound(numerator);
+        multiplier = powerDigit(10, Math.abs(exponent));
+
+        numerator = Math.round10(numerator, exponent) * multiplier;
+        denominator = multiplier;
+    }
+
+    numerator = Math.round(numerator);
+    denominator = Math.round(denominator);
+
+    //функия нахождения найбольшего общего делителя
 
     function gcd(x, y){
         x = Math.abs(x);
@@ -82,10 +106,15 @@ function getRegularFraction(power){
     numerator /= gcdValue;
     denominator /= gcdValue;
 
+    if (denominator < 0){
+        denominator = Math.abs(denominator);
+        numerator = -numerator;
+    }
+
     return [numerator, denominator];
 }
 
-const powerDigit = (num, power) => {
+const powerDigit = (number, power) => {
 
     // функция расчёта целой степени числа
 
@@ -98,20 +127,41 @@ const powerDigit = (num, power) => {
         return res;
     }
 
-    if (isNotaNumber(num) || isNotaNumber(power)) return 'Неправильный формат';
+    if (isNotaNumber(number) || isNotaNumber(power)) return 'Неправильный формат';
     let res = 1;
     power = +power; 
+    number = +number; 
 
     if (!Number.isInteger(power)){ // если степень не целая
-        let [numerator, denominator] = getRegularFraction(power); 
-        console.log(numerator, denominator);
-        let poweredNum = integerPower(num, numerator); // возводим число в степень числителя
-        console.log(poweredNum);
-        // ищем корень степени знаменателя от полученного
-        res = Math.nthroot(poweredNum, denominator); 
+        let [powerNumerator, powerDenominator] = getRegularFraction(power); 
+        let [numberNumerator, numberDenominator] = getRegularFraction(number);
+
+        console.log(`${numberNumerator}/${numberDenominator} ^ ${powerNumerator}/${powerDenominator}`);
+
+        if (powerNumerator < 0){
+            if (Number.isInteger(number)) {  
+                number = numberNumerator;
+                console.log(`${number}`);
+
+                let poweredNumber = Math.abs(integerPower(number, powerNumerator));
+
+                res = number < 0 ? -1 / Math.nthroot(poweredNumber, powerDenominator) : 1 / Math.nthroot(poweredNumber, powerDenominator);
+            }
+            else {
+                number = numberNumerator > 0 ? numberDenominator : -numberDenominator;
+                console.log(`${number}`);
+                let poweredNumber = Math.abs(integerPower(number, powerNumerator));
+                res = number < 0 ? -Math.nthroot(poweredNumber, powerDenominator) : Math.nthroot(poweredNumber, powerDenominator);
+            }
+        }
+        else {
+            let poweredNumber = integerPower(number, powerNumerator);
+            res = number < 0 ? -Math.nthroot(Math.abs(poweredNumber), powerDenominator) : Math.nthroot(poweredNumber, powerDenominator);
+        }
+
         if (isNotaNumber(res)) return 'Выходит не число!';
     }
-    else res = integerPower(num, power);
+    else res = integerPower(number, power);
 
     return res;
 }
