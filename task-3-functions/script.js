@@ -6,10 +6,13 @@ function isNotaNumber(n){
 
 const getMaxDigit  = number => {
     if (isNotaNumber(number)) return 'Вы ввели не число!';
+
     number = number + '';
     let digits = [];
+
     for (let i = 0; i < number.length; i++)  
         if (/[\d]/.test(number[i])) digits.push(+number[i]);
+
     return Math.max(...digits);
 }
 
@@ -19,30 +22,28 @@ const getMaxDigit  = number => {
 
 (function() {
     function decimalAdjust(type, value, exp) {
+
       // Если степень не определена, либо равна нулю...
-      if (typeof exp === 'undefined' || +exp === 0) {
-        return Math[type](value);
-      }
+      if (typeof exp === 'undefined' || +exp === 0) return Math[type](value);
+      
       value = +value;
       exp = +exp;
+
       // Если значение не является числом, либо степень не является целым числом...
-      if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-        return NaN;
-      }
+      if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) return NaN;
+      
       // Сдвиг разрядов
       value = value.toString().split('e');
       value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+
       // Обратный сдвиг
       value = value.toString().split('e');
+
       return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
     }
   
     // Десятичное округление к ближайшему
-    if (!Math.round10) {
-      Math.round10 = function(value, exp) {
-        return decimalAdjust('round', value, exp);
-      };
-    }
+    if (!Math.round10) Math.round10 = (value, exp) => decimalAdjust('round', value, exp);
 })();
 
 // добавляем в Math функцию вычисления корня n-нной степени
@@ -67,6 +68,8 @@ function getRegularFraction(power){
     // функия нахождения найбольшего общего делителя
 
     function gcd(x, y){
+        x = Math.abs(x);
+        y = Math.abs(y);
         if (y > x) return gcd(y, x);
 	    if (!y) return x;
 	    return gcd(y, x % y);
@@ -90,7 +93,7 @@ const powerDigit = (num, power) => {
         let res = 1;
         if (power !== 0) {
             for (let i = 0; i < Math.abs(power); i++) res *= num;
-            res = power < 0 ? (1 / res).toFixed(2) : res;
+            res = power < 0 ? (1 / res) : res;
         }
         return res;
     }
@@ -98,13 +101,18 @@ const powerDigit = (num, power) => {
     if (isNotaNumber(num) || isNotaNumber(power)) return 'Неправильный формат';
     let res = 1;
     power = +power; 
-    if (!Number.isInteger(power)){ // еслм степень не целая
+
+    if (!Number.isInteger(power)){ // если степень не целая
         let [numerator, denominator] = getRegularFraction(power); 
+        console.log(numerator, denominator);
         let poweredNum = integerPower(num, numerator); // возводим число в степень числителя
-        res = Math.nthroot(poweredNum, denominator); // ищем корень степени знаминателя от полученного
+        console.log(poweredNum);
+        // ищем корень степени знаменателя от полученного
+        res = Math.nthroot(poweredNum, denominator); 
         if (isNotaNumber(res)) return 'Выходит не число!';
     }
     else res = integerPower(num, power);
+
     return res;
 }
 
@@ -124,6 +132,7 @@ const formatName = name => {
 const calculateAfterTax = money => {
     if (isNotaNumber(money)) return 'Вы ввели не число!';
     const tax = 19.5;
+
     return money - (money * tax) / 100;
 }
 
@@ -133,6 +142,7 @@ const getRandomNumber = (n,m) => {
     if (isNotaNumber(n) || isNotaNumber(m)) return 'Неправильный формат';
     else if(!Number.isInteger(+n) || !Number.isInteger(+m)) return 'Числа должны быть целыми';
     else if (!isNotaNumber(n) && !isNotaNumber(m) && Number.isInteger(+n) && Number.isInteger(+m) && n > m) return 'n должно быть менше m';
+    
     return +n + Math.floor((Math.random()*(m - n + 1)));
 }
 
@@ -141,7 +151,9 @@ const getRandomNumber = (n,m) => {
 const countLetter = (letter, word, wordFormat = /^\w+$/gi) => {
     if (letter.length !== 1) return 'Вы ввели не символ!';
     else if (wordFormat && !wordFormat.test(word)) return 'Вы ввели не слово!';
+
     let matches = word.split(new RegExp(letter, 'gi')).length - 1;
+
     return matches;
 }
 
@@ -150,6 +162,7 @@ const countLetter = (letter, word, wordFormat = /^\w+$/gi) => {
 const convertCurrency = moneyString => {
     const validStringFormat = /^\d+(\$|uah)$/gi;
     moneyString = moneyString.trim();
+
     if (!validStringFormat.test(moneyString)) return 'Неправильный формат денег (валюты)';
 
     const validCurrencyFormat = /(\$|uah)/gi;
@@ -168,9 +181,12 @@ const convertCurrency = moneyString => {
 
 const getRandomPassword = (length = 8) =>{
     length = length || 8;
+
     if (isNotaNumber(length)) return 'Вы ввели не число!'; 
     else if (!Number.isInteger(+length)) return 'Число должно быть целым'; 
+
     let password = '';
+
     for (let i = 0; i < length; i++) password += Math.floor(Math.random() * 10);
 
     return password;
@@ -180,6 +196,7 @@ const getRandomPassword = (length = 8) =>{
 
 const deleteLetters = (letter, string) => {
     if (letter.length !== 1) return 'Вы ввели не символ!';
+
     return string.replaceAll(letter, '');
 }
 
@@ -188,6 +205,7 @@ const deleteLetters = (letter, string) => {
 const isPalyndrom = string => {
     const compressed = string.toLowerCase().replaceAll(/[\s—_,\.]/gi, '').split('').join('');
     const reversed = compressed.split('').reverse().join('');
+
     return `Строка "${string}" ${compressed === reversed ? '' : 'не '}являеться полиндромом`;
 }
 
@@ -222,7 +240,6 @@ function callFunction(e) {
 
     const parentElem = elem.closest('.function');
     const functionResult = parentElem.querySelector('.function__result');
-    
 
     let functionArgs = [];
 
