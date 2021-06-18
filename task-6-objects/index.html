@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW #6 Objects</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <section class="banner">
+            <div class="banner__inner">
+                <div class="container">
+                    <div class="banner__content">
+                        <h2 class="banner__title">HW #6 Objects</h2>
+                        <div class="functions">
+                            <div class="function">
+                                <div class="function__inner">
+                                    <div class="function__header">
+                                        <h3 class="function__title">getSubjects()</h3>
+                                    </div>
+                                    <div class="function__content">
+                                        <div class="function__description">
+                                            Створіть функцію
+                                            <code>getSubjects(students[0] --> ["Math", "Algorithms", "Data
+                                        science"]</code>
+                                            - яка повертає список предметів для конкретного студента. Зверніть увагу –
+                                            назву
+                                            предмету необхідно повертати з великої літери, а _ – замінити на пробіл
+                                        </div>
+                                        <div class="input-box">
+                                            <input placeholder="Номер студента" class="function__input" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="function__footer">
+                                        <button class="btn">Отримати</button>
+                                        <div class="function__result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="function">
+                                <div class="function__inner">
+                                    <div class="function__header">
+                                        <h3 class="function__title">getAverageMark()</h3>
+                                    </div>
+                                    <div class="function__content">
+                                        <div class="function__description">
+                                            Створіть функцію
+                                            <code>getAverageMark(students[0]) --> 3.79</code>
+                                            – яка поверне середню оцінку по усім предметам для переданого студента.
+                                            Оцінку округліть до 2-го знаку
+                                        </div>
+                                        <div class="input-box">
+                                            <input placeholder="Номер студента" class="function__input" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="function__footer">
+                                        <button class="btn">Отримати</button>
+                                        <div class="function__result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="function">
+                                <div class="function__inner">
+                                    <div class="function__header">
+                                        <h3 class="function__title">getStudentInfo()</h3>
+                                    </div>
+                                    <div class="function__content">
+                                        <div class="function__description">
+                                            Створіть функцію
+                                            <code>getStudentInfo(students[0]) --> { "course": 3, "name": "Tanya", "averageMark": 3.79}</code>
+                                            яка повертає інформацію загального виду по переданому студенту (вам
+                                            знадобиться функція з попереднього завдання). Повинна бути виведена
+                                            інформація: курс, ім'я, середня оцінка.
+                                        </div>
+                                        <div class="input-box">
+                                            <input placeholder="Номер студента" class="function__input" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="function__footer">
+                                        <button class="btn">Отримати</button>
+                                        <div class="function__result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="function">
+                                <div class="function__inner">
+                                    <div class="function__header">
+                                        <h3 class="function__title">getStudentsNames()</h3>
+                                    </div>
+                                    <div class="function__content">
+                                        <div class="function__description">
+                                            Створіть функцію
+                                            <code>getStudentsNames(students) --> ["Anton", "Tanya, "Victor"]</code>
+                                            – яка повертає імена студентів у алфавітному порядку.
+                                        </div>
+                                    </div>
+                                    <div class="function__footer">
+                                        <button class="btn">Отримати</button>
+                                        <div class="function__result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="function">
+                                <div class="function__inner">
+                                    <div class="function__header">
+                                        <h3 class="function__title">getBestStudent()</h3>
+                                    </div>
+                                    <div class="function__content">
+                                        <div class="function__description">
+                                            Створіть функцію
+                                            <code>getBestStudent(students) --> "Anton"</code>
+                                            яка повертає кращого студента зі списку по показнику середньої оцінки.
+                                        </div>
+                                    </div>
+                                    <div class="function__footer">
+                                        <button class="btn">Отримати</button>
+                                        <div class="function__result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="function">
+                                <div class="function__inner">
+                                    <div class="function__header">
+                                        <h3 class="function__title">calculateWordLetters()</h3>
+                                    </div>
+                                    <div class="function__content">
+                                        <div class="function__description">
+                                            Створіть функцію
+                                            <code>calculateWordLetters("тест") --> { "т": 2, "е": 1, "с": 1 }</code>
+                                            - яка повертає обє'кт, в якому ключі це букви у слові, а значення –
+                                            кількість їх повторень.
+                                        </div>
+                                        <div class="input-box">
+                                            <input placeholder="Слово" class="function__input" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="function__footer">
+                                        <button class="btn">Отримати</button>
+                                        <div class="function__result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
