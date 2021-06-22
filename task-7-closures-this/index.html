@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW #7 Closures and this</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <section class="banner">
+            <div class="banner__body">
+                <div class="banner__inner">
+                    <div class="container">
+                        <div class="tasks">
+                            <div class="task">
+                                <div class="task__inner">
+                                    <h2 class="task__title">getMyTaxes()</h2>
+                                    <div class="task__description">
+                                        Створіть функцію getMyTaxes.call(country, salary) -> number; – яка рахує скільки
+                                        податків ви заплатите як IT-спеціаліст в якійсь з країн. Функція повинна
+                                        викликатись
+                                        через call та працювати з даними через this
+                                    </div>
+                                    <div class="task__inputs">
+                                        <select name="country" class="task__select">
+                                            <option class="task__option" value="Ukraine">Ukraine
+                                            </option>
+                                            <option class="task__option" value="Latvia">Latvia
+                                            </option>
+                                            <option class="task__option" value="Litva">Litva
+                                            </option>
+                                        </select>
+                                        <input type="number" min='0' max='2500' class="task__input"
+                                            placeholder="Зарплата">
+                                    </div>
+                                    <div class="task__footer">
+                                        <button data-function-name='getMyTaxes' class="btn">Обчислити</button>
+                                        <span class="task__result"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task">
+                                <div class="task__inner">
+                                    <h2 class="task__title">getMiddleTaxes()</h2>
+                                    <div class="task__description">
+                                        Створіть функцію getMiddleTaxes.call(country) -> number; – яка рахує скільки у
+                                        середньому податків платятт IT-спеціалісти у кожній країні. (tax *
+                                        middleSalary).
+                                        Функція повинна викликатись через call та працювати з даними через this
+                                    </div>
+                                    <div class="task__inputs">
+                                        <select name="country" class="task__select">
+                                            <option class="task__option" value="Ukraine">Ukraine</option>
+                                            <option class="task__option" value="Latvia">Latvia</option>
+                                            <option class="task__option" value="Litva">Litva</option>
+                                        </select>
+                                    </div>
+                                    <div class="task__footer">
+                                        <button data-function-name='getMiddleTaxes' class="btn">Обчислити</button>
+                                        <span class="task__result"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task">
+                                <div class="task__inner">
+                                    <h2 class="task__title">getTotalTaxes()</h2>
+                                    <div class="task__description">
+                                        Створіть функцію getTotalTaxes.call(country) -> number; – яка рахує, скільки
+                                        всього
+                                        податків платять IT-спеціалісти у кожній країні. (tax * middleSalary *
+                                        vacancies).
+                                        Функція повинна викликатись через call та працювати з даними через this
+                                    </div>
+                                    <div class="task__inputs">
+                                        <select name="country" class="task__select">
+                                            <option class="task__option" value="Ukraine">Ukraine</option>
+                                            <option class="task__option" value="Latvia">Latvia</option>
+                                            <option class="task__option" value="Litva">Litva</option>
+                                        </select>
+                                    </div>
+                                    <div class="task__footer">
+                                        <button data-function-name='getTotalTaxes' class="btn">Обчислити</button>
+                                        <span class="task__result"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task">
+                                <div class="task__inner">
+                                    <h2 class="task__title">getMySalary()</h2>
+                                    <div class="task__description">
+                                        Створіть функцію getMySalary(country) – яка буде писати в консоль об'єкт виду: {
+                                        salary:
+                                        number, taxes: number, profit: number } кожні 10 секунд. Значення salary –
+                                        генеруйте
+                                        випадковим чином у діапазоні 1500-2000. taxes – розраховується в залежності від
+                                        вибраної
+                                        країни та значення salary.
+                                        profit = salary - taxes;
+                                    </div>
+                                    <div class="task__inputs">
+                                        <select name="country" class="task__select">
+                                            <option class="task__option" value="Ukraine">Ukraine</option>
+                                            <option class="task__option" value="Latvia">Latvia</option>
+                                            <option class="task__option" value="Litva">Litva</option>
+                                        </select>
+                                    </div>
+                                    <div class="task__footer">
+                                        <button data-function-name='getMySalary' class="btn">Обчислити</button>
+                                        <span class="task__result"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
