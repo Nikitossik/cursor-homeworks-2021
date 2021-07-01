@@ -11,9 +11,19 @@
 
 <body>
     <div class="wrapper">
-        <div class="container"></div>
+        <div class="task-controls">
+            <form action="" class="task-form">
+                <input type="number" min="0" max="75" class="task-input" placeholder="Size" name='size' id='size'>
+                <input type="number" min="0" max="10" class="task-input" placeholder="Columns" name='cols' id='cols'>
+                <input type="number" min="0" max="10" class="task-input" placeholder="Rows" name='rows' id='rows'>
+            </form>
+        </div>
+        <div class="task-output">
+            <div class="container"></div>
+        </div>
     </div>
     <script src="./js/script.js"></script>
+    <script src="./js/view.js"></script>
 </body>
 
 </html>

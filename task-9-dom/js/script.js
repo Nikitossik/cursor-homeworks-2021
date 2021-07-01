@@ -20,8 +20,8 @@ const createBlock = (size, color) => {
     return block;
 }
 
-const generateBlocks = (parent, size, cols, rows) => {
-    parent.innerHTML = '';
+const generateBlocks = (size = 50, cols = 5, rows = 5) => {
+    container.innerHTML = '';
     for (let i = 0; i < rows; i++) {
         const row = document.createElement('div');
         row.classList.add('blocks-row');
@@ -33,7 +33,7 @@ const generateBlocks = (parent, size, cols, rows) => {
         container.append(row);
     }
 
-    setTimeout(generateBlocks, 1000, parent, size, cols, rows);
+    //setTimeout(generateBlocks, 1000, parent, size, cols, rows);
 }
 
-generateBlocks(container, 50, 5, 5);
+// generateBlocks(container, 50, 5, 5);
