@@ -32,8 +32,4 @@ const generateBlocks = (size = 50, cols = 5, rows = 5) => {
         }
         container.append(row);
     }
-
-    //setTimeout(generateBlocks, 1000, parent, size, cols, rows);
 }
-
-// generateBlocks(container, 50, 5, 5);
