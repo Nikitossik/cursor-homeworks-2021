@@ -82,7 +82,6 @@ body{
 
 .content{
     display: none;
-    background: url('../images/content-background-image.png') no-repeat fixed center / cover;
     background: #000;
 }
 
