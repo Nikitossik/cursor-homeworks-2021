@@ -45,7 +45,7 @@ if (controlButtons) {
         controlButton.addEventListener('click', function () {
             const url = controlButton.dataset.url;
             const format = formatSelect.value;
-            console.log(url);
+
             loadJSON(imagesURL).then(images => {
                 loadJSON(`${url}`).then(planets => {
                     showPlanets(planets, images, format);
