@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "homepage": "https://nikitossik.github.io/cursor-homeworks-2021/task-15-webpack/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
