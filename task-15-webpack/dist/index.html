@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        HW #15 Webpack
+    </title>
+<script defer src="babel.bundle.js"></script><script defer src="logs.bundle.js"></script><script defer src="cube.bundle.js"></script><script defer src="drumpad.bundle.js"></script><script defer src="starwars.bundle.js"></script></head>
+
+<body>
+    <div class="wrapper">
+        <div class="section">
+            <div class="section__inner">
+                <h2 class="">Tasks 3-8, 11, 14 you can find in the console</h2>
+                <h2>Task 9, 10, 13:</h2>
+                <div class="task-controls">
+                    <form action="" class="task-form">
+                        <input type="number" min="0" max="75" class="task-input" placeholder="Size" name='size'
+                            id='size'>
+                        <input type="number" min="0" max="10" class="task-input" placeholder="Columns" name='cols'
+                            id='cols'>
+                        <input type="number" min="0" max="10" class="task-input" placeholder="Rows" name='rows'
+                            id='rows'>
+                    </form>
+                </div>
+                <div class="task-output">
+                    <div class="container"></div>
+                </div>
+            </div>
+        </div>
+        <audio data-key='66' class="sound"></audio>
+        <audio data-key='67' class="sound"></audio>
+        <audio data-key='69' class="sound"></audio>
+        <audio data-key='70' class="sound"></audio>
+        <audio data-key='72' class="sound"></audio>
+        <audio data-key='74' class="sound"></audio>
+        <audio data-key='76' class="sound"></audio>
+        <audio data-key='80' class="sound"></audio>
+        <audio data-key='83' class="sound"></audio>
+        <div class="banner">
+            <div data-key='66' class="sound-button">
+                <kbd class="sound-button__key">b</kbd>
+                <span class="sound-button__sound-name">bounce</span>
+            </div>
+            <div data-key='67' class="sound-button">
+                <kbd class="sound-button__key">c</kbd>
+                <span class="sound-button__sound-name">coin</span>
+            </div>
+            <div data-key='69' class="sound-button">
+                <kbd class="sound-button__key">e</kbd>
+                <span class="sound-button__sound-name">explosion</span>
+            </div>
+            <div data-key='70' class="sound-button">
+                <kbd class="sound-button__key">f</kbd>
+                <span class="sound-button__sound-name">fall</span>
+            </div>
+            <div data-key='72' class="sound-button">
+                <kbd class="sound-button__key">h</kbd>
+                <span class="sound-button__sound-name">hit</span>
+            </div>
+            <div data-key='74' class="sound-button">
+                <kbd class="sound-button__key">j</kbd>
+                <span class="sound-button__sound-name">jump</span>
+            </div>
+            <div data-key='76' class="sound-button">
+                <kbd class="sound-button__key">l</kbd>
+                <span class="sound-button__sound-name">lazer</span>
+            </div>
+            <div data-key='80' class="sound-button">
+                <kbd class="sound-button__key">p</kbd>
+                <span class="sound-button__sound-name">powerup</span>
+            </div>
+            <div data-key='83' class="sound-button">
+                <kbd class="sound-button__key">s</kbd>
+                <span class="sound-button__sound-name">select</span>
+            </div>
+        </div>
+        <section class="banner-section section">
+            <div class="swiper-container banner__slider">
+                <div class="swiper-wrapper">
+                    <img class="swiper-slide slider__image" src="" />
+                    <img class="swiper-slide slider__image" src="" />
+                    <img class="swiper-slide slider__image" src="" />
+                    <img class="swiper-slide slider__image" src="" />
+                    <img class="swiper-slide slider__image" src="" />
+                </div>
+            </div>
+            <div class="banner__content">
+                <h2 class="banner__title">Choose a film name: </h2>
+                <div class="input-group">
+                    <select class="custom-select banner__select" id="film-select">
+                        <option value="1">A New Hope</option>
+                        <option value="2">The Empire Strikes Back</option>
+                        <option value="3">Return of the Jedi</option>
+                        <option value="4">The Phantom Menace</option>
+                        <option value="5">Attack of the Clones</option>
+                        <option value="6">Revenge of the Sith</option>
+                    </select>
+                    <select class="custom-select mx-2 banner__select" id="format-select">
+                        <option selected value="">English</option>
+                        <option value="wookiee">Wookie</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn action-btn" id='load-btn' type="button">Click to see info!</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main class="content">
+            <section class="people-section section">
+                <div class="container">
+                    <h2 class='section__title'></h2>
+                    <div class="section__inner">
+                        <div class="row people-row"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="planets-section section">
+                <div class="container">
+                    <h2 class='section__title'></h2>
+                    <div class="section__inner">
+                        <div class="row planets-row"></div>
+                        <div class="planet-controls-row">
+                            <button class="btn action-btn control-btn" id='prev-btn' type="button">
+                                <i class="fas fa-arrow-alt-circle-left"></i>
+                            </button>
+                            <button class="btn action-btn control-btn" id='next-btn' type="button">
+                                <i class="fas fa-arrow-alt-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

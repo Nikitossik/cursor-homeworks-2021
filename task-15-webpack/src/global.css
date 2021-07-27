@@ -1,0 +1,26 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  overflow-anchor: none;
+}
+
+.wrapper {
+  overflow-anchor: none
+}
+
+.section {
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+.section__inner {
+  padding: 0px 10px 20px 10px;
+}
