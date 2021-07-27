@@ -13,7 +13,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'HW #15 Webpack',
-            template: 'index.html'
+            template: 'template.html'
         }),
     ],
     module: {
@@ -51,5 +51,5 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true
     },
-    mode: 'production',
+    mode: 'development',
 };
